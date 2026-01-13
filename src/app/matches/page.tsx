@@ -38,7 +38,7 @@ export default async function MatchesPage() {
       )}
 
       {(session?.user as any)?.role === "ADMIN" ? (
-        <a className="underline" href="/admin/matches">Go to admin</a>
+        <a className="underline" href="/admin/events">Go to admin</a>
       ) : null}
     </main>
   );

@@ -38,12 +38,12 @@ export default async function AdminMatchesPage() {
   return (
     <main className="p-6 space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-semibold">Admin: Matches</h1>
+        <h1 className="text-2xl font-semibold">Admin: Events</h1>
         <LogoutButton />
       </div>
 
       <section className="rounded-lg border p-4 space-y-3">
-        <h2 className="font-medium">Create match</h2>
+        <h2 className="font-medium">Create event</h2>
         <form action={createMatch} className="grid gap-2 max-w-md">
           <input className="rounded-md border p-2" name="title" placeholder="Match title" />
           <input className="rounded-md border p-2" name="eventDate" placeholder="e.g. 2026-01-13T19:00:00Z" />
@@ -53,7 +53,7 @@ export default async function AdminMatchesPage() {
       </section>
 
       <section className="rounded-lg border p-4 space-y-3">
-        <h2 className="font-medium">Assign user to match</h2>
+        <h2 className="font-medium">Assign user to event</h2>
         <form action={assign} className="flex flex-wrap gap-2 items-center">
           <select className="rounded-md border p-2" name="matchId" defaultValue="">
             <option value="" disabled>Select match</option>
@@ -74,7 +74,7 @@ export default async function AdminMatchesPage() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-medium">Current matches</h2>
+        <h2 className="font-medium">Current events</h2>
         <ul className="space-y-2">
           {matches.map((m) => (
             <li key={m.id} className="rounded-lg border p-4">
