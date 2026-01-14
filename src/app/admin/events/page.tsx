@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import LogoutButton from "@/components/LogoutButton";
+import NavBar from "@/components/NavBar";
 
 const prisma = new PrismaClient();
 
@@ -36,17 +36,17 @@ export default async function AdminMatchesPage() {
   });
 
   return (
-    <main className="p-6 space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-semibold">Admin: Events</h1>
-        <LogoutButton />
-      </div>
+    <>
+      <NavBar />
+
+      <main className="p-6 space-y-6">
+      <h1 className="text-2xl font-semibold">Admin: Events</h1>
 
       <section className="rounded-lg border p-4 space-y-3">
         <h2 className="font-medium">Create event</h2>
         <form action={createMatch} className="grid gap-2 max-w-md">
           <input className="rounded-md border p-2" name="title" placeholder="Match title" />
-          <input className="rounded-md border p-2" name="eventDate" placeholder="e.g. 2026-01-13T19:00:00Z" />
+          <input className="rounded-md border p-2" name="eventDate" type="datetime-local" />
           <input className="rounded-md border p-2" name="location" placeholder="Location (optional)" />
           <button className="rounded-md border p-2">Create</button>
         </form>
@@ -97,5 +97,6 @@ export default async function AdminMatchesPage() {
 
       <a className="underline" href="/matches">Back to My matches</a>
     </main>
+    </>
   );
 }

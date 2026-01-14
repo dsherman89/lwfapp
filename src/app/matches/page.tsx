@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { PrismaClient } from "@prisma/client";
-import LogoutButton from "@/components/LogoutButton";
+import NavBar from "@/components/NavBar";
 
 const prisma = new PrismaClient();
 
@@ -16,11 +16,11 @@ export default async function MatchesPage() {
   });
 
   return (
-    <main className="p-6 space-y-4">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-semibold">My matches</h1>
-        <LogoutButton />
-      </div>
+    <>
+      <NavBar />
+
+      <main className="p-6 space-y-4">
+      <h1 className="text-2xl font-semibold">My matches</h1>
 
       {assignments.length === 0 ? (
         <p>No matches assigned yet.</p>
@@ -41,5 +41,6 @@ export default async function MatchesPage() {
         <a className="underline" href="/admin/events">Go to admin</a>
       ) : null}
     </main>
+    </>
   );
 }
