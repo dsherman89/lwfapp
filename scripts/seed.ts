@@ -1,4 +1,4 @@
-import { PrismaClient, Role } from "@prisma/client";
+import { PrismaClient, Role, Alignment } from "@prisma/client";
 import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
@@ -6,31 +6,33 @@ const prisma = new PrismaClient();
 async function main() {
   const passwordHash = await bcrypt.hash("password123", 10);
 
-  const admin = await prisma.user.upsert({
-    where: { email: "admin@lwf.test" },
+  await prisma.user.upsert({
+    where: { username: "admin" },
     update: {},
-    create: { email: "admin@lwf.test", password: passwordHash, role: Role.ADMIN, name: "Admin" },
-  });
-
-  const user = await prisma.user.upsert({
-    where: { email: "user@lwf.test" },
-    update: {},
-    create: { email: "user@lwf.test", password: passwordHash, role: Role.USER, name: "User" },
-  });
-
-  const match = await prisma.match.create({
-    data: {
-      title: "Sample Match",
-      eventDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
-      location: "TBD",
+    create: {
+      username: "admin",
+      email: "admin@lwf.test",
+      password: passwordHash,
+      role: Role.ADMIN,
+      alignment: Alignment.FACE,
+      isChampion: false,
     },
   });
 
-  await prisma.matchAssignment.create({
-    data: { matchId: match.id, userId: user.id },
+  await prisma.user.upsert({
+    where: { username: "user" },
+    update: {},
+    create: {
+      username: "user",
+      email: "user@lwf.test",
+      password: passwordHash,
+      role: Role.USER,
+      alignment: Alignment.HEEL,
+      isChampion: false,
+    },
   });
 
-  console.log("Seeded:", { admin: admin.email, user: user.email, match: match.title });
+  console.log("Seeded users: admin / password123, user / password123");
 }
 
 main()

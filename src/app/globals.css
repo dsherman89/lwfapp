@@ -32,12 +32,7 @@
     border-radius: 16px;
   }
 
-  .btn {
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 10px 12px;
-    background: rgba(255,255,255,0.03);
-  }
+  
   .btn:hover { background: rgba(255,255,255,0.06); }
 
   .btn-accent {
@@ -79,4 +74,17 @@
     border-color: rgba(202,162,74,0.35);
     background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
   }
+}
+
+
+.btn-secondary {
+  background: rgba(255,255,255,0.08);
+  color: #ffffff;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.btn-danger {
+  background: rgba(209,26,26,0.35);
+  color: #ffffff;
+  border: 1px solid rgba(209,26,26,0.55);
 }

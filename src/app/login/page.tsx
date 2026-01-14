@@ -49,7 +49,7 @@ export default function LoginPage() {
             className="btn btn-accent w-full"
             onClick={() =>
               signIn("credentials", {
-                email: username,
+                username,
                 password,
                 callbackUrl: "/post-login",
               })

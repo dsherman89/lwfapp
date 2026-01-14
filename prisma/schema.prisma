@@ -12,14 +12,28 @@ enum Role {
   USER
 }
 
+enum Alignment {
+  HEEL
+  FACE
+}
+
 model User {
   id        String   @id @default(cuid())
-  email     String   @unique
+  // Legacy field (kept for now; can remove later)
+  email     String?  @unique
+  username  String   @unique
   name      String?
   password  String
   role      Role     @default(USER)
+  alignment Alignment
+  isChampion Boolean @default(false)
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  createdByUserId String?
+  createdBy       User?   @relation("CreatedBy", fields: [createdByUserId], references: [id])
+  createdUsers    User[]  @relation("CreatedBy")
 
   assignments MatchAssignment[]
 }
