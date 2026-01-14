@@ -19,7 +19,7 @@ export default function LoginPage() {
           value={password} onChange={(e) => setPassword(e.target.value)} />
 
         <button className="w-full rounded-md border p-2"
-          onClick={() => signIn("credentials", { email, password, callbackUrl: "/matches" })}>
+          onClick={() => signIn("credentials", { email, password, callbackUrl: "/post-login" })}>
           Sign in
         </button>
       </div>
