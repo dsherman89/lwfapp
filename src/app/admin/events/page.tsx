@@ -73,28 +73,6 @@ export default async function AdminMatchesPage() {
         </form>
       </section>
 
-      <section className="space-y-3">
-        <h2 className="font-medium">Current events</h2>
-        <ul className="space-y-2">
-          {matches.map((m) => (
-            <li key={m.id} className="rounded-lg border p-4">
-              <div className="font-medium">{m.title}</div>
-              <div className="text-sm opacity-70">
-                {new Date(m.eventDate).toLocaleString()} {m.location ? `• ${m.location}` : ""}
-              </div>
-              <div className="mt-2 text-sm">
-                <div className="opacity-70">Participants:</div>
-                {m.participants.length === 0 ? <div>None</div> : (
-                  <ul className="list-disc pl-5">
-                    {m.participants.map((p) => <li key={p.id}>{p.user.email}</li>)}
-                  </ul>
-                )}
-              </div>
-            </li>
-          ))}
-        </ul>
-      </section>
-
       <a className="underline" href="/matches">Back to My matches</a>
     </main>
     </>
