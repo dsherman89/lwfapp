@@ -1,5 +1,4 @@
 import { PrismaClient } from "@prisma/client";
-import NavBar from "@/components/NavBar";
 
 const prisma = new PrismaClient();
 
@@ -37,9 +36,8 @@ export default async function AdminMatchesPage() {
 
   return (
     <>
-      <NavBar />
-
       <main className="p-6 space-y-6">
+        <a href="/admin" className="underline text-sm opacity-80">← Back to dashboard</a>
       <h1 className="text-2xl font-semibold">Admin: Events</h1>
 
       <section className="rounded-lg border p-4 space-y-3">

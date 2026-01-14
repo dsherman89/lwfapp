@@ -1,4 +1,3 @@
-import NavBar from "@/components/NavBar";
 import Link from "next/link";
 
 function Card({ title, desc, href }: { title: string; desc: string; href: string }) {
@@ -13,7 +12,6 @@ function Card({ title, desc, href }: { title: string; desc: string; href: string
 export default function AdminHome() {
   return (
     <>
-      <NavBar />
       <main className="p-6 space-y-4">
         <h1 className="text-2xl font-semibold">Admin Dashboard</h1>
 
